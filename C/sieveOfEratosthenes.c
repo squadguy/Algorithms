@@ -36,7 +36,7 @@ void SieveOfEratosthenes(int n)
 
 int main()
 {
-	SieveOfEratosthenes(1200);
+	SieveOfEratosthenes(100);
 
 
 	return 0;
