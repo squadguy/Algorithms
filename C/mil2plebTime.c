@@ -6,33 +6,64 @@
 
 #include<stdio.h>
 
-void validHours(int *x);
-void validMinutes(int *x);
+int validHours(int *x); //Ensure time isn't greater than 23
+int validMinutes(int *x); //Ensure minutes aren't greater than 59
+void convertTime(int *x, int *hours, int *mins);
 
 int main(){
 
-	int time = 2350;
+	int time = 1562;
+	int hoursValid, minsValid = 0;
 	int *ptrTime = &time;
+	int *ptrHoursValid = &hoursValid;
+	int *ptrMinsValid = &minsValid;
 
-	validHours(ptrTime);		
-	validMinutes(ptrTime);		
+
+	hoursValid = validHours(ptrTime);		
+	minsValid = validMinutes(ptrTime);		
+
+	convertTime(ptrTime, ptrHoursValid, ptrMinsValid);
+
 
 	return 0;
 }
 
-void validHours(int *x)
+int validHours(int *x)
 {	
+	int valid = 0;
 	if(*x > 2359)
-	       printf("not a valid time --- exiting\n");	
+	       printf("not a valid time\n");	
 	else
-		printf("%d\n", *x);
+		valid = 1;
+
+	return valid;
 }
 
-void validMinutes(int *x)
+int validMinutes(int *x)
 {
+	int valid = 0;
 	int minutes = *x % 100;
 	
 	if(minutes > 59)
-		printf("%d\n", "Minutes Invalid --- exiting\n");
+		printf("Minutes Invalid\n");
+	else
+		valid = 1;
 
+	return valid;
+
+}
+
+//need to set an AM and PM variable
+void convertTime(int *x, int *hours, int *mins)
+{
+	if(*hours == 1 && *mins == 1 )
+	{
+		if(*x < 1300)
+			printf("%d\n", *x);
+		else
+			printf("%d\n", *x-1200);
+	}
+	else
+		printf("Incorrect format\n");
+		
 }
