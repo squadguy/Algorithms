@@ -1,3 +1,9 @@
+/*
+ *
+ * Converts time from military time to normal people time
+ *
+ */
+
 #include<stdio.h>
 
 void validHours(int *x);
