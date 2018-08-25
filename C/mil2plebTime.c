@@ -8,21 +8,23 @@
 
 int validHours(int *x); //Ensure time isn't greater than 23
 int validMinutes(int *x); //Ensure minutes aren't greater than 59
-void convertTime(int *x, int *hours, int *mins);
+void convertTime(int *x, int *hours, int *mins, char *);
+char* aVp (int *x);
 
 int main(){
 
-	int time = 1562;
+	int time = 1437;
 	int hoursValid, minsValid = 0;
+	char* aorp = "";
 	int *ptrTime = &time;
 	int *ptrHoursValid = &hoursValid;
 	int *ptrMinsValid = &minsValid;
 
-
 	hoursValid = validHours(ptrTime);		
 	minsValid = validMinutes(ptrTime);		
+	aorp = aVp(ptrTime);
 
-	convertTime(ptrTime, ptrHoursValid, ptrMinsValid);
+	convertTime(ptrTime, ptrHoursValid, ptrMinsValid, aorp);
 
 
 	return 0;
@@ -53,15 +55,34 @@ int validMinutes(int *x)
 
 }
 
+char* aVp (int *x)
+{
+	int hour = *x / 100;
+	char * amVpm = "AM";
+
+	if (hour > 11)
+	{
+		amVpm = "PM";
+	}
+
+	return amVpm;
+}
+
 //need to set an AM and PM variable
-void convertTime(int *x, int *hours, int *mins)
+void convertTime(int *x, int *hours, int *mins, char *amORpm)
 {
 	if(*hours == 1 && *mins == 1 )
 	{
 		if(*x < 1300)
-			printf("%d\n", *x);
+		{
+			printf("%d", *x);
+			printf(amORpm);
+		}
 		else
-			printf("%d\n", *x-1200);
+		{
+			printf("%d", *x-1200);
+			printf(amORpm);
+		}
 	}
 	else
 		printf("Incorrect format\n");
