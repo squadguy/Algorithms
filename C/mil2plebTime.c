@@ -13,7 +13,7 @@ char* aVp (int *x);
 
 int main(){
 
-	int time = 1437;
+	int time = 0;
 	int hoursValid, minsValid = 0;
 	char* aorp = "";
 	int *ptrTime = &time;
@@ -73,7 +73,11 @@ void convertTime(int *x, int *hours, int *mins, char *amORpm)
 {
 	if(*hours == 1 && *mins == 1 )
 	{
-		if(*x < 1300)
+		if(*x == 1200)
+			printf("Noon");
+		else if(*x == 0)
+			printf("Midnight");
+		else if(*x < 1300)
 		{
 			printf("%d", *x);
 			printf(amORpm);
