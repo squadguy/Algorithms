@@ -1,6 +1,8 @@
+
+/* Determines if a sorted linked list has two numbers that equal a particular sum */
+
 #include<stdio.h>
 #include<stdlib.h>
-
 
 typedef struct linkedList
 {
@@ -19,22 +21,19 @@ typedef struct node
 
 linkedList* initList(int);
 void enqueue(linkedList*, int);
+void display(linkedList*);
 
 int main() {
 
 
 	linkedList *ll = initList(5);
 
-	printf("%d\n", ll->head->val);
-
 	enqueue(ll, 4);
+	enqueue(ll, 3);
+	enqueue(ll, 2);
 
-	printf("%d\n", ll->head->val);
-	printf("%d\n", ll->head->next->val);
-	printf("%d\n", ll->head->next->prev->val);
-	printf("%d\n", ll->tail->prev->val);
-	printf("%d\n", ll->tail->val);
 
+	display(ll);
 	
 
 	return 0;
@@ -67,4 +66,16 @@ void enqueue(linkedList* ll, int data)
 	tmpNode->next = ll->head;
 	ll->head->prev = tmpNode;
 	ll->head = tmpNode;
+}
+
+void display(linkedList* ll)
+{
+	node* current = ll->head;
+
+	while (current->next != NULL)
+	{
+		printf("%d->",current->val);
+		current = current->next;
+	}
+	printf("NULL\n");
 }
