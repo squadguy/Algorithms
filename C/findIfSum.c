@@ -26,13 +26,11 @@ void display(linkedList*);
 int main() {
 
 
-	linkedList *ll = initList(5);
+	linkedList *ll = initList(9);
 
-	enqueue(ll, 4);
-	enqueue(ll, 3);
-	enqueue(ll, 2);
-
-
+	enqueue(ll, 8);
+	enqueue(ll, 7);
+	enqueue(ll, 6);
 	display(ll);
 	
 
@@ -42,19 +40,19 @@ int main() {
 linkedList* initList(int data)
 {
 
-	linkedList* ll = malloc(sizeof(linkedList));
-	ll->head = NULL;
-	ll->head = NULL;
+	linkedList* tmpll = malloc(sizeof(linkedList));
+	tmpll->head = NULL;
+	tmpll->head = NULL;
 
 	node* tmpNode = malloc(sizeof(node));
 	tmpNode->next = NULL;
 	tmpNode->prev = NULL;
 	tmpNode->val = data;
 
-	ll->head = tmpNode;
-	ll->tail = tmpNode;
+	tmpll->head = tmpNode;
+	tmpll->tail = tmpNode;
 
-	return ll;
+	return tmpll;
 
 }
 
@@ -72,7 +70,7 @@ void display(linkedList* ll)
 {
 	node* current = ll->head;
 
-	while (current->next != NULL)
+	while (current != NULL)
 	{
 		printf("%d->",current->val);
 		current = current->next;
