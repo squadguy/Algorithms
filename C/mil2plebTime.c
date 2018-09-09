@@ -13,18 +13,18 @@ char* aVp (int *x);
 
 int main(){
 
-	int time = 0;
+	int time = 1200;
 	int hoursValid, minsValid = 0;
 	char* aorp = "";
-	int *ptrTime = &time;
-	int *ptrHoursValid = &hoursValid;
-	int *ptrMinsValid = &minsValid;
+//	int *ptrTime = &time;
+//	int *ptrHoursValid = &hoursValid;
+//	int *ptrMinsValid = &minsValid;
 
-	hoursValid = validHours(ptrTime);		
-	minsValid = validMinutes(ptrTime);		
-	aorp = aVp(ptrTime);
+	hoursValid = validHours(&time);		
+	minsValid = validMinutes(&time);		
+	aorp = aVp(&time);
 
-	convertTime(ptrTime, ptrHoursValid, ptrMinsValid, aorp);
+	convertTime(&time, &hoursValid, &minsValid, aorp);
 
 
 	return 0;
@@ -74,9 +74,9 @@ void convertTime(int *x, int *hours, int *mins, char *amORpm)
 	if(*hours == 1 && *mins == 1 )
 	{
 		if(*x == 1200)
-			printf("Noon");
+			printf("Noon\n");
 		else if(*x == 0)
-			printf("Midnight");
+			printf("Midnight\n");
 		else if(*x < 1300)
 		{
 			printf("%d", *x);
@@ -84,7 +84,7 @@ void convertTime(int *x, int *hours, int *mins, char *amORpm)
 		}
 		else
 		{
-			printf("%d", *x-1200);
+			printf("%d\n", *x-1200);
 			printf(amORpm);
 		}
 	}
