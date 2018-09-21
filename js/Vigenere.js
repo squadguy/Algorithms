@@ -26,6 +26,23 @@
 		console.log(list[i]);
 	}
 
+	function convertString(str)
+	{
+		var locString = str.replace(/\s/g, "");
+		locString = locString.toLowerCase();
+		var stringArr = locString.split("");
+
+		var asciiArr = [];
+
+		for(var i = 0; i < stringArr.length; i++)
+		{
+			asciiArr[i] = stringArr[i].charCodeAt();
+		}
+
+		return asciiArr;
+
+	}
+
 
 	function compare(list)
 	{
@@ -33,7 +50,7 @@
 		var x = 1;
 		var j = 0;
 
-		while(x < list.length + 1)
+		while(x < list.length)
 		{
 			locList[j] = 0;
 		
@@ -58,4 +75,7 @@
 	var statList = compare(list); 
 	console.log(statList.join("-"));
 //	console.log("a".charCodeAt(0));
+	
+	var str = "HHHHHHH";
 
+	console.log(convertString(str));
