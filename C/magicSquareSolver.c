@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<math.h>
 
-int* makeMagicSquare(int);
-int* buildMagicSquare(int, int);
+//int* makeMagicSquare(int);
+void buildMagicSquare(int);
 int getMidIndex(int);
 int getMinIndex(int, int);
 int getNextIndex(int, int, int);
@@ -12,11 +12,12 @@ int main()
 
 	int sideLength = 5;
 
-	makeMagicSquare(sideLength);
+	buildMagicSquare(sideLength);
 
 	return 0;
 }
 
+/*
 int* makeMagicSquare(int sideLength) 
 {
 //	int magicSquare [sideLength * sideLength];
@@ -30,6 +31,7 @@ int* makeMagicSquare(int sideLength)
 
 	return magicSquare;
 }
+*/
 
 int getMidIndex(int sideLength)
 {
@@ -45,33 +47,37 @@ int getMinIndex(int sideLength, int midIndex)
 	return minIndex;
 }
 
-int* buildMagicSquare(int sideLength, int minIndex)
+void buildMagicSquare(int sideLength)
 {
+	int midIndex = getMidIndex(sideLength);
+	int curIndex = getMinIndex(sideLength, midIndex);
+	int iterator = 1;
 	int magicSquare[sideLength * sideLength];
-	int curIndex = minIndex;
-	int iterator = 0;
-//	magicSquare[minIndex] = 1;
 
 
-	for (int i = 1; i < ((sideLength * sideLength + 1)); i++)
+	for (int i = 1; i < ((sideLength * sideLength + 1)); ++i )
 	{
 		magicSquare[curIndex] = i;
 
+		printf("%d:", magicSquare[curIndex]);
+		printf("%d\n", curIndex);
+
 		curIndex = getNextIndex(sideLength, curIndex, iterator);
 
-		if(iterator != sideLength)
+		if( iterator != sideLength)
 		{
-			++iterator;
+			iterator++;
 		}
 		else
 		{
 			iterator = 0;
 		}
+		
 
 	}
 
-	return magicSquare;
 }
+
 
 int getNextIndex(int sideLength, int curIndex, int iterator)
 {
@@ -98,17 +104,29 @@ int getNextIndex(int sideLength, int curIndex, int iterator)
 	block = (curIndex / sideLength);
 	subIndex = (curIndex % sideLength);
 
+
 	nextSubIndex = subIndex;              // Init this val equal to curSubIndex
 
 	//Get Next Block
-	if (block == sideLength - 1)
+	if (iterator != sideLength)
 	{
-		nextBlock = 0;
+		nextBlock = block + 1;
+		
+		if (nextBlock >= sideLength)
+		{
+			nextBlock = nextBlock - sideLength;
+		}
 	}
 	else
 	{
-		nextBlock = block + 1;
+		nextBlock = block + 2;
+		if (nextBlock >= sideLength)
+		{
+			nextBlock = nextBlock - sideLength;
+		}
 	}
+
+	printf("%d\n", nextBlock);	
 
 	// Get Next SubIndex	
 	if (iterator != sideLength)
@@ -123,10 +141,9 @@ int getNextIndex(int sideLength, int curIndex, int iterator)
 		}
 	}
 
-	nextIndex = nextBlock + nextSubIndex;
+	nextIndex = (nextBlock * sideLength) + nextSubIndex;
+//	printf("%d\n", nextIndex);
 
 	return nextIndex;
-
-
 	
 }
