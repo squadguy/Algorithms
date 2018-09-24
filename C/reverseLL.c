@@ -30,6 +30,7 @@ LinkedList* initList();
 void enqueue(LinkedList*, char);
 void print(LinkedList*);
 void reversePrint(LinkedList*);
+void destroyList(LinkedList*);
 
 void reverse(LinkedList*);
 
@@ -47,6 +48,7 @@ int main()
 	reverse(ll);
 	print(ll);
 	
+	destroyList(ll);
 
 	return 0;
 }
@@ -54,7 +56,7 @@ int main()
 
 Node* initNode(char val)
 {
-	Node *node = malloc(sizeof(Node));
+	Node *node = malloc(sizeof(*node));
 	node->next = NULL;
 	node->prev = NULL;
 	node->val = val;
@@ -64,7 +66,7 @@ Node* initNode(char val)
 
 LinkedList* initList()
 {
-	LinkedList* list = malloc(sizeof(list));
+	LinkedList* list = malloc(sizeof(*list));
 	list->tail = NULL;
 	list->head = list->tail;
 
@@ -130,4 +132,22 @@ void reverse(LinkedList* list)
 	/* Swap head and tail pointers */
 	list->head = list->tail;
 	list->tail = current;	
+}
+
+void destroyList(LinkedList* list)
+{
+	Node *next;
+	next = list->head->next;
+
+	while (next != NULL)
+	{
+		free(list->head);
+		list->head = next;
+		next = list->head->next;
+	}
+
+	free(list->head);
+
+	free(list);
+	
 }
