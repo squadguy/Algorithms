@@ -24,7 +24,7 @@ void print(LinkedList*);
 int main()
 {
 	LinkedList *ll = initList();
-
+/*
 	enqueue(ll, 'f');
 	printf("%c\n", ll->head->val);
 	printf("%c\n", ll->tail->val);
@@ -36,6 +36,14 @@ int main()
 	enqueue(ll, 'c');
 	printf("%c\n", ll->head->val);
 	printf("%c\n", ll->tail->val);
+*/
+
+	enqueue(ll, 'd');
+	enqueue(ll, 'e');
+	enqueue(ll, 'a');
+	enqueue(ll, 'r');
+
+	print(ll);
 	
 
 	return 0;
@@ -87,9 +95,10 @@ void print(LinkedList* list)
 	while ( current->next != NULL )
 	{
 		printf("%c->", current->val);
+		current = current->next;
 	}
 
-	printf("\n");
+	printf("%c\n", current->val);
 
 }
 
