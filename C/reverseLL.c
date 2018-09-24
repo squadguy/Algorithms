@@ -9,15 +9,26 @@ typedef struct Node
 
 } Node;
 
+Node* initNode(char);
+
+
 int main()
 {
 
-	Node *ll = malloc(sizeof(Node));
-	ll->next = NULL;
-	ll->prev = NULL;
-	ll->val = 'd';
+	Node* node = initNode('C');
 
-	printf("%c\n",ll->val);
+	printf("%c\n",node->val);
 
 	return 0;
+}
+
+
+Node* initNode(char val)
+{
+	Node *node = malloc(sizeof(Node));
+	node->next = NULL;
+	node->prev = NULL;
+	node->val = val;
+	
+	return node;
 }
