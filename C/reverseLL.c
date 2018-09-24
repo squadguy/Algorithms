@@ -19,18 +19,11 @@ typedef struct LinkedList
 Node* initNode(char);
 LinkedList* initList();
 void enqueue(LinkedList*, char);
-
+void print(LinkedList*);
 
 int main()
 {
-	//Node *node = initNode('D');
-
 	LinkedList *ll = initList();
-
-/*
-	ll->head=node;
-	ll->tail=node;
-*/
 
 	enqueue(ll, 'f');
 	printf("%c\n", ll->head->val);
@@ -44,7 +37,6 @@ int main()
 	printf("%c\n", ll->head->val);
 	printf("%c\n", ll->tail->val);
 	
-
 
 	return 0;
 }
@@ -73,18 +65,31 @@ void enqueue(LinkedList* list, char val)
 {
 	Node* tmpNode = initNode(val);
 	
-	if (list->head == NULL)
+	if (list->tail == NULL)
 	{
 		list->head = tmpNode;
 		list->tail = tmpNode;
 	}
 	else
 	{
-		list->head->prev = tmpNode;
-		tmpNode->next = list->head;
-		list->head = tmpNode;
+		list->tail->next = tmpNode;
+		tmpNode->prev = list->tail;
+		list->tail = tmpNode;
 	}
 	
+
+}
+
+void print(LinkedList* list)
+{
+	Node *current = list->head;
+
+	while ( current->next != NULL )
+	{
+		printf("%c->", current->val);
+	}
+
+	printf("\n");
 
 }
 
