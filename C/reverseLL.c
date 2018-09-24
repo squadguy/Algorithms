@@ -18,21 +18,27 @@ typedef struct LinkedList
 
 Node* initNode(char);
 
+LinkedList* initList()
+{
+	LinkedList* list = malloc(sizeof(list));
+	list->head = NULL;
+	list->tail = NULL;
+	return list;	
+}
 
 int main()
 {
+	Node *node = initNode('D');
+
+	LinkedList *ll = initList();
 
 
-	Node* node = initNode('C');
+	ll->head=node;
+	ll->tail=node;
 
-	printf("%c\n",node->val);
+	printf("%c\n", ll->head->val);
+	printf("%c\n", ll->tail->val);
 
-	LinkedList *ll = malloc(sizeof(LinkedList));
-	ll->head = node;
-	ll->tail = node;
-	
-	printf("%c\n",ll->head->val);
-	printf("%c\n",ll->tail->val);
 
 	return 0;
 }
@@ -47,3 +53,4 @@ Node* initNode(char val)
 	
 	return node;
 }
+
