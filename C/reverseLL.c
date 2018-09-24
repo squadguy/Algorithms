@@ -22,7 +22,7 @@ void enqueue(LinkedList*, char);
 void print(LinkedList*);
 void reversePrint(LinkedList*);
 
-//void reverse(LinkedList*);
+void reverse(LinkedList*);
 
 int main()
 {
@@ -36,7 +36,8 @@ int main()
 
 	print(ll);
 
-	reversePrint(ll);
+	reverse(ll);
+	print(ll);
 	
 
 	return 0;
@@ -107,7 +108,6 @@ void reversePrint(LinkedList* list)
 	printf("%c\n", current->val);
 }
 
-/*
 void reverse(LinkedList* list)
 {
 	Node *current;
@@ -117,11 +117,11 @@ void reverse(LinkedList* list)
 
 	while ( current->prev != NULL )
 	{
-		printf("%c->", current->val);
 		current->next = current->prev;
 		current = current->next;
-	}	
-		printf("%c\n", current->val);
-	
+	}
+
+	current->next = NULL;
+	list->head = list->tail;
+	list->tail = current;	
 }
-*/
