@@ -1,3 +1,12 @@
+/***************************************************************
+ *                                                             *
+ *       This script reverses a linked list of chars by        * 
+ *       reversing the pointers in place in order N time       *
+ *                                                             *
+ *                       Chris Wampnar                         *
+ *                                                             *
+ ***************************************************************/
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -32,10 +41,9 @@ int main()
 	enqueue(ll, 'e');
 	enqueue(ll, 'a');
 	enqueue(ll, 'r');
-
+	enqueue(ll, 'y');
 
 	print(ll);
-
 	reverse(ll);
 	print(ll);
 	
@@ -78,8 +86,6 @@ void enqueue(LinkedList* list, char val)
 		tmpNode->prev = list->tail;
 		list->tail = tmpNode;
 	}
-	
-
 }
 
 void print(LinkedList* list)
@@ -93,7 +99,6 @@ void print(LinkedList* list)
 	}
 
 	printf("%c\n", current->val);
-
 }
 
 void reversePrint(LinkedList* list)
@@ -112,7 +117,7 @@ void reverse(LinkedList* list)
 {
 	Node *current;
 
-	//Flip tail&head pointers
+	 /* Flip tail&head pointers */
 	current = list->tail;
 
 	while ( current->prev != NULL )
@@ -122,6 +127,7 @@ void reverse(LinkedList* list)
 	}
 
 	current->next = NULL;
+	/* Swap head and tail pointers */
 	list->head = list->tail;
 	list->tail = current;	
 }
