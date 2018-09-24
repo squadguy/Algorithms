@@ -9,15 +9,30 @@ typedef struct Node
 
 } Node;
 
+typedef struct LinkedList
+{
+	Node *head;
+	Node *tail;
+
+} LinkedList;
+
 Node* initNode(char);
 
 
 int main()
 {
 
+
 	Node* node = initNode('C');
 
 	printf("%c\n",node->val);
+
+	LinkedList *ll = malloc(sizeof(LinkedList));
+	ll->head = node;
+	ll->tail = node;
+	
+	printf("%c\n",ll->head->val);
+	printf("%c\n",ll->tail->val);
 
 	return 0;
 }
