@@ -18,13 +18,13 @@
  * # Find middle index of array (and hence, the "Square").
  * # Move to the middle of the next "block" (sidelength distance away)
  * # This index is the minimum number, or 1, always.
- * # Now, we go from populate the array from number 2 to the Max number (sidelength * sidelength)
+ * # Now, we go populating the array from number 2 to the Max number (sidelength * sidelength)
  * # Initalize an interator to 1.
  * # If interator isn't equal to sidelength - the next index is over one block and increase subindex by 1 ("wrap both block and index if you're all the way to the right")
  * # If iterator is equal to side length - move over two blocks (wrap when needed) do not increase subindex
  * # Continue to do this until all array values are full
  * 
- * This algorithm multiplies the next logical block value by the side length and then adds the current subindex +1 to determine the next value's index in the array.  See diagram in function "getNextIndex"
+ * This algorithm multiplies the next logical block value by the side length and then adds the current subindex +1 (unless iterator == sidelength : no subindex increase) to determine the next value's index in the array.  See diagram in function "getNextIndex"
  *
  */
 
