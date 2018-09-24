@@ -20,30 +20,23 @@ Node* initNode(char);
 LinkedList* initList();
 void enqueue(LinkedList*, char);
 void print(LinkedList*);
+void reversePrint(LinkedList*);
+
+//void reverse(LinkedList*);
 
 int main()
 {
 	LinkedList *ll = initList();
-/*
-	enqueue(ll, 'f');
-	printf("%c\n", ll->head->val);
-	printf("%c\n", ll->tail->val);
-
-	enqueue(ll, 'o');
-	printf("%c\n", ll->head->val);
-	printf("%c\n", ll->tail->val);
-
-	enqueue(ll, 'c');
-	printf("%c\n", ll->head->val);
-	printf("%c\n", ll->tail->val);
-*/
 
 	enqueue(ll, 'd');
 	enqueue(ll, 'e');
 	enqueue(ll, 'a');
 	enqueue(ll, 'r');
 
+
 	print(ll);
+
+	reversePrint(ll);
 	
 
 	return 0;
@@ -102,4 +95,33 @@ void print(LinkedList* list)
 
 }
 
+void reversePrint(LinkedList* list)
+{
+	Node *current = list->tail;
+	while( current->prev != NULL)
+	{
+		printf("%c->", current->val);
+		current = current->prev;
+	}
 
+	printf("%c\n", current->val);
+}
+
+/*
+void reverse(LinkedList* list)
+{
+	Node *current;
+
+	//Flip tail&head pointers
+	current = list->tail;
+
+	while ( current->prev != NULL )
+	{
+		printf("%c->", current->val);
+		current->next = current->prev;
+		current = current->next;
+	}	
+		printf("%c\n", current->val);
+	
+}
+*/
