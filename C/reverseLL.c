@@ -47,6 +47,10 @@ int main()
 	print(ll);
 	reverse(ll);
 	print(ll);
+	reverse(ll);
+	print(ll);
+	reverse(ll);
+	print(ll);
 	
 	destroyList(ll);
 
@@ -118,17 +122,19 @@ void reversePrint(LinkedList* list)
 void reverse(LinkedList* list)
 {
 	Node *current;
+	Node *prevNode;
 
-	 /* Flip tail&head pointers */
 	current = list->tail;
 
 	while ( current->prev != NULL )
 	{
+		prevNode = current->next;
 		current->next = current->prev;
+		current->prev = prevNode;
 		current = current->next;
 	}
-
-	current->next = NULL;
+	current->next = current->prev;
+	current->prev = prevNode->next;
 	/* Swap head and tail pointers */
 	list->head = list->tail;
 	list->tail = current;	
