@@ -11,8 +11,8 @@ int fastest(int*, int*);
 
 int main()
 {
-	int low = 6;
-	int high = 11;
+	int low = 1;
+	int high = 101;
 	int total;
 
 	total = slow(&low, &high);
@@ -71,7 +71,9 @@ int fastest(int* low, int* high)
 {
 	int length = (*high - *low)+1;
 
-	int sum = (int)(((double)(*high + *low) / 2) * length);
+	int sum = ((*high + *low) * length/2);
+
+/*	int sum = (int)(((double)(*high + *low) / 2) * length); */
 
 	return sum;
 }
