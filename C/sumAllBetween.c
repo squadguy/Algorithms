@@ -25,12 +25,13 @@ int main()
 	return 0;
 }
 
-//Takes n iterations
+/* Takes n iterations */
 int slow(int* low, int* high)
 {
 	int sum = 0;
+	int i;
 
-	for( int i = *low; i < (*high+1); i++)
+	for( i = *low; i < (*high+1); i++)
 	{
 		sum = sum + i; 
 	}
