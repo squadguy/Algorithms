@@ -1,4 +1,7 @@
-/* Finds the sum of a set */
+/* CHALLENGE */
+/* Given a lower bound and upper bound of a whole number set, return the sum of each value within the set */
+
+/* Three functions to return the sum of a whole number set, given a lower and upper bound; in increasing efficiency */
 
 #include <stdio.h>
 
@@ -18,9 +21,6 @@ int main()
 	printf("%d\n", total);
 	total = fastest(&low, &high);
 	printf("%d\n", total);
-
-
-
 
 	return 0;
 }
